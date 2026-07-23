@@ -1,0 +1,97 @@
+.paper-panel {
+  position: relative;
+  padding: var(--space-6);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.95), rgba(247, 234, 216, 0.88));
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(74, 47, 37, 0.1);
+  box-shadow: var(--shadow-floating);
+}
+
+.paper-panel::before,
+.paper-panel::after {
+  content: "";
+  position: absolute;
+  width: 72px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(201, 143, 143, 0.18);
+}
+
+.paper-panel::before {
+  top: 1rem;
+  left: 1rem;
+  transform: rotate(-8deg);
+}
+
+.paper-panel::after {
+  top: 1rem;
+  right: 1rem;
+  transform: rotate(8deg);
+}
+
+.scrapbook-card {
+  position: relative;
+  padding: var(--space-4);
+  background: var(--color-paper);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(74, 47, 37, 0.08);
+  box-shadow: var(--shadow-paper);
+}
+
+.scrapbook-card--tilted-left {
+  transform: rotate(-1.5deg);
+}
+
+.scrapbook-card--tilted-right {
+  transform: rotate(1.5deg);
+}
+
+.washi-tape {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  width: 4.5rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  background: rgba(214, 181, 109, 0.32);
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.polaroid-card {
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.75rem 1.25rem;
+  box-shadow: var(--shadow-paper);
+  border: 1px solid rgba(74, 47, 37, 0.08);
+}
+
+.polaroid-image {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: 4px;
+  background:
+    linear-gradient(135deg, rgba(201, 143, 143, 0.25), rgba(232, 211, 185, 0.85));
+}
+
+.polaroid-caption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 1.35rem;
+}
+
+.floating-decoration {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(1px);
+  opacity: 0.8;
+}
+
+.floating-decoration--rose {
+  background: rgba(201, 143, 143, 0.2);
+}
+
+.floating-decoration--gold {
+  background: rgba(214, 181, 109, 0.18);
+}

@@ -1,0 +1,40 @@
+export const storageKeys = {
+  role: 'ines-love-site:role',
+  unlock: 'ines-love-site:unlock',
+  admin: 'ines-love-site:admin',
+  replies: 'ines-love-site:replies',
+  favorites: 'ines-love-site:favorites',
+  music: 'ines-love-site:music',
+  photosData: 'ines-love-site:photos-data',
+  musicData: 'ines-love-site:music-data',
+  dailyData: 'ines-love-site:daily-data',
+}
+
+export function readStorage(key, fallback) {
+  if (typeof window === 'undefined') {
+    return fallback
+  }
+
+  try {
+    const stored = window.localStorage.getItem(key)
+    return stored ? JSON.parse(stored) : fallback
+  } catch {
+    return fallback
+  }
+}
+
+export function writeStorage(key, value) {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  window.localStorage.setItem(key, JSON.stringify(value))
+}
+
+export function removeStorage(key) {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  window.localStorage.removeItem(key)
+}

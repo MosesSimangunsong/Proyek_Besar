@@ -1,0 +1,37 @@
+.admin-shell {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--color-admin-bg), #f7eee1);
+  color: var(--color-deep-brown);
+}
+
+.admin-page {
+  width: min(100% - 2rem, 1180px);
+  margin: 0 auto;
+  padding: 1.25rem 0 2rem;
+}
+
+.admin-card {
+  background: var(--color-admin-surface);
+  border: 1px solid var(--color-admin-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-admin);
+}
+
+.admin-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}

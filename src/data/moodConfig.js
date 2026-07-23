@@ -1,0 +1,42 @@
+export const moodConfig = [
+  {
+    id: 'kangen',
+    label: 'Kangen',
+    prompt: 'Aku lagi kangen',
+    style: 'typewriter',
+    description: 'For the moments when you miss me a little extra.',
+    accent: 'warm',
+  },
+  {
+    id: 'sedih',
+    label: 'Sedih',
+    prompt: 'Aku lagi sedih',
+    style: 'soft-fade',
+    description: 'For the days when your heart feels heavy.',
+    accent: 'soft',
+  },
+  {
+    id: 'capek',
+    label: 'Capek / Butuh Semangat',
+    prompt: 'Aku capek hari ini',
+    style: 'sticky-note',
+    description: 'For the days when you need a soft place to rest.',
+    accent: 'sunny',
+  },
+  {
+    id: 'marah',
+    label: 'Marah / Kesal',
+    prompt: 'Aku lagi kesal',
+    style: 'envelope',
+    description: 'For the moments when your heart needs gentleness.',
+    accent: 'deep',
+  },
+  {
+    id: 'romantis',
+    label: 'Random Romantis',
+    prompt: 'Surprise me with love',
+    style: 'glow-card',
+    description: 'For no reason, just love.',
+    accent: 'glow',
+  },
+]
