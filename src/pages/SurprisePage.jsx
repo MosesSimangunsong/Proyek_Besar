@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import FloatingDecorations from '../components/scrapbook/FloatingDecorations'
-import surpriseVideo from '../assets/img/lv_0_20260729233049.mp4'
 import { appCopy } from '../data/appCopy'
 import { validateSecretCode } from '../utils/validationUtils'
 
@@ -105,7 +104,7 @@ export default function SurprisePage() {
                   preload="metadata"
                   style={{ width: '100%', borderRadius: 'var(--radius-md)', display: 'block', background: '#000' }}
                 >
-                  <source src={surpriseVideo} type="video/mp4" />
+                  <source src="/img/surprise-video.mp4" type="video/mp4" />
                   Browser kamu belum mendukung pemutaran video ini.
                 </video>
               </div>
