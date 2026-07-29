@@ -10,7 +10,7 @@ export default function GalleryGrid({ photos, onOpen }) {
       }}
     >
       {photos.map((photo, index) => (
-        <GalleryPhotoCard key={photo.id} photo={photo} onOpen={onOpen} index={index} />
+        <GalleryPhotoCard key={`${photo.id}-${index}`} photo={photo} onOpen={onOpen} index={index} />
       ))}
     </section>
   )

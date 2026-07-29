@@ -48,7 +48,6 @@ export default function UnlockPage({ onUnlock, onUnlockAdmin }) {
         style={{ width: 'min(100%, 34rem)' }}
       >
         <div>
-          <span className="eyebrow">Tempat kecil yang privat</span>
           <h1 className="page-title" style={{ marginTop: '0.5rem' }}>
             {appCopy.unlock.title}
           </h1>
@@ -67,9 +66,6 @@ export default function UnlockPage({ onUnlock, onUnlockAdmin }) {
         <button type="submit" className="button-primary">
           {appCopy.unlock.button}
         </button>
-        <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-          Ines bisa memasukkan tanggal spesial, dan Moses juga bisa memasukkan kode admin di sini.
-        </p>
       </motion.form>
     </section>
   )

@@ -1,4 +1,4 @@
-const defaultSecretCode = '230624'
+const defaultSecretCode = '08022026'
 const defaultAdminCode = 'for-moses'
 
 export function validateSecretCode(value) {

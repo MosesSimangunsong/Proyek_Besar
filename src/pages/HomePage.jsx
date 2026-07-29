@@ -16,14 +16,14 @@ import { appCopy } from '../data/appCopy'
 import { getPhotos } from '../services/photosService'
 
 const featureCards = [
-  { to: '/gallery', title: 'Kepingan kecil tentang kita', body: 'Gallery berisi foto-foto scrapbook yang ingin aku simpan dekat dengan kita.' },
-  { to: '/photobox', title: 'Momen kecil di Photobox', body: 'Masuklah, tersenyum sedikit, dan simpan satu lagi kenangan manis bersama kita.' },
+  { to: '/gallery', title: 'Gallery', body: 'Liat gallery kita ness' },
+  { to: '/photobox', title: 'Photobox', body: 'Coba fitur photobox nes, wkwkwwkwkwk' },
 ]
 
 const pixelTransitionPairs = [
-  { id: 'memory-1', before: img1, after: img4, title: 'Lirikan kecil' },
-  { id: 'memory-2', before: img2, after: img5, title: 'Jeda hangat' },
-  { id: 'memory-3', before: img3, after: img6, title: 'Kekacauan lembut' },
+  { id: 'memory-1', before: img1, after: img4, title: '' },
+  { id: 'memory-2', before: img2, after: img5, title: '' },
+  { id: 'memory-3', before: img3, after: img6, title: '' },
 ]
 
 export default function HomePage() {
@@ -108,12 +108,6 @@ export default function HomePage() {
         </section>
 
         <section className="stack-md">
-          <div>
-            <h2 className="page-title" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
-              Mulai dari mana pun hatimu mau.
-            </h2>
-            <p className="page-subtitle">Setiap halaman punya kehangatan yang sama, tapi dengan cerita kecilnya sendiri.</p>
-          </div>
           <div
             style={{
               display: 'grid',

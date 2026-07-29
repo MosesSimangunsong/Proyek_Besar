@@ -1,9 +1,10 @@
-import { LayoutDashboard, Image as ImageIcon, ListMusic, LogOut } from 'lucide-react'
+import { Eye, LayoutDashboard, Image as ImageIcon, ListMusic, LogOut } from 'lucide-react'
 import { NavLink, Outlet } from 'react-router-dom'
 
 const navItems = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/admin/photos', label: 'Photos', icon: ImageIcon },
+  { to: '/admin/gallery-visibility', label: 'Gallery Visibility', icon: Eye },
   { to: '/admin/music', label: 'Music', icon: ListMusic },
 ]
 

@@ -5,6 +5,7 @@ export const storageKeys = {
   music: 'ines-love-site:music',
   photosData: 'ines-love-site:photos-data',
   musicData: 'ines-love-site:music-data',
+  galleryVisibility: 'ines-love-site:gallery-visible-ids',
 }
 
 export function readStorage(key, fallback) {
