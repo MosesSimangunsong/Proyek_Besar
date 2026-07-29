@@ -81,6 +81,36 @@
   font-size: 1.35rem;
 }
 
+.gallery-photo-card {
+  --tilt: 0deg;
+  padding: 0.6rem;
+  text-align: left;
+  cursor: pointer;
+  transform: rotate(var(--tilt));
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery-photo-card:hover,
+.gallery-photo-card:focus-visible {
+  transform: rotate(0deg) scale(1.05) translateY(-6px);
+  box-shadow: var(--shadow-floating, 0 20px 40px rgba(74, 47, 37, 0.25));
+  z-index: 1;
+}
+
+.gallery-photo-card__frame {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.gallery-photo-card__image {
+  transition: transform 0.5s ease;
+}
+
+.gallery-photo-card:hover .gallery-photo-card__image,
+.gallery-photo-card:focus-visible .gallery-photo-card__image {
+  transform: scale(1.08);
+}
+
 .floating-decoration {
   position: absolute;
   border-radius: 999px;

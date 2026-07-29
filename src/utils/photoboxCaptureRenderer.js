@@ -13,7 +13,7 @@ export async function renderCapturedPhoto({
   const ctx = canvas.getContext('2d')
 
   if (!ctx) {
-    throw new Error('Canvas context is not available.')
+    throw new Error('Konteks kanvas tidak tersedia.')
   }
 
   ctx.imageSmoothingQuality = 'high'

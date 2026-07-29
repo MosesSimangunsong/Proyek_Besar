@@ -113,7 +113,7 @@ export function useMusicPlayer() {
 
   const togglePlayback = async () => {
     if (!audioRef.current) {
-      setError('No track ready yet.')
+      setError('Belum ada lagu yang siap.')
       return
     }
 
@@ -128,7 +128,7 @@ export function useMusicPlayer() {
       setError('')
     } catch {
       setShouldPlay(true)
-      setError('Tap once more to play our little song.')
+      setError('Ketuk sekali lagi untuk memutar lagu kecil kita.')
     }
   }
 

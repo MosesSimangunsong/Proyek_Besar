@@ -4,11 +4,11 @@ export default function EnvelopeLetter({ letter }) {
       <div className="stack-md">
         <div className="scrapbook-card" style={{ padding: '1rem' }}>
           <p className="handwritten" style={{ margin: 0, fontSize: '1.6rem' }}>
-            An opened little envelope for you
+            Sebuah amplop kecil yang telah dibuka untukmu
           </p>
         </div>
         <div>
-          <span className="eyebrow">Mood • {letter.mood}</span>
+          <span className="eyebrow">Suasana Hati • {letter.mood}</span>
           <h2 className="page-title" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', marginTop: '0.5rem' }}>
             {letter.title}
           </h2>

@@ -4,7 +4,7 @@ export const moodConfig = [
     label: 'Kangen',
     prompt: 'Aku lagi kangen',
     style: 'typewriter',
-    description: 'For the moments when you miss me a little extra.',
+    description: 'Untuk saat-saat kamu kangen aku sedikit lebih dari biasanya.',
     accent: 'warm',
   },
   {
@@ -12,7 +12,7 @@ export const moodConfig = [
     label: 'Sedih',
     prompt: 'Aku lagi sedih',
     style: 'soft-fade',
-    description: 'For the days when your heart feels heavy.',
+    description: 'Untuk hari-hari saat hati kamu terasa berat.',
     accent: 'soft',
   },
   {
@@ -20,7 +20,7 @@ export const moodConfig = [
     label: 'Capek / Butuh Semangat',
     prompt: 'Aku capek hari ini',
     style: 'sticky-note',
-    description: 'For the days when you need a soft place to rest.',
+    description: 'Untuk hari-hari saat kamu butuh tempat lembut untuk istirahat.',
     accent: 'sunny',
   },
   {
@@ -28,15 +28,15 @@ export const moodConfig = [
     label: 'Marah / Kesal',
     prompt: 'Aku lagi kesal',
     style: 'envelope',
-    description: 'For the moments when your heart needs gentleness.',
+    description: 'Untuk saat-saat hati kamu butuh kelembutan.',
     accent: 'deep',
   },
   {
     id: 'romantis',
     label: 'Random Romantis',
-    prompt: 'Surprise me with love',
+    prompt: 'Kejutkan aku dengan cinta',
     style: 'glow-card',
-    description: 'For no reason, just love.',
+    description: 'Tanpa alasan, cuma cinta.',
     accent: 'glow',
   },
 ]

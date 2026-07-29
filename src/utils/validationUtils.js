@@ -10,7 +10,3 @@ export function validateAdminCode(value) {
   const target = import.meta.env.VITE_ADMIN_CODE || defaultAdminCode
   return value.trim() === String(target).trim()
 }
-
-export function validateReplyText(value) {
-  return value.trim().length > 0
-}

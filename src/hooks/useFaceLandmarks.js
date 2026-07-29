@@ -84,7 +84,7 @@ export function useFaceLandmarks({ enabled, videoRef, getFaceAssets }) {
             landmarksRef.current = nextLandmarks
             setIsPerformanceFallback(false)
           } catch {
-            setFaceTrackingError('This effect is feeling shy on this device. You can try another one, sayang.')
+            setFaceTrackingError('Efek ini sedang malu-malu di perangkat ini, sayang. Kamu bisa coba efek lain.')
             setIsPerformanceFallback(true)
             landmarksRef.current = []
           }
@@ -95,7 +95,7 @@ export function useFaceLandmarks({ enabled, videoRef, getFaceAssets }) {
 
       animationFrameRef.current = window.requestAnimationFrame(runLoop)
     } catch {
-      setFaceTrackingError('This effect is feeling shy on this device. You can try another one, sayang.')
+      setFaceTrackingError('Efek ini sedang malu-malu di perangkat ini, sayang. Kamu bisa coba efek lain.')
       setIsModelReady(false)
       cleanupModel()
     } finally {

@@ -48,14 +48,14 @@ export default function UnlockPage({ onUnlock, onUnlockAdmin }) {
         style={{ width: 'min(100%, 34rem)' }}
       >
         <div>
-          <span className="eyebrow">A private little place</span>
+          <span className="eyebrow">Tempat kecil yang privat</span>
           <h1 className="page-title" style={{ marginTop: '0.5rem' }}>
             {appCopy.unlock.title}
           </h1>
           <p className="page-subtitle">{appCopy.unlock.subtitle}</p>
         </div>
         <label className="stack-sm">
-          <span className="sr-only">Secret code</span>
+          <span className="sr-only">Kode rahasia</span>
           <input
             className="input-field"
             placeholder={appCopy.unlock.placeholder}
@@ -68,7 +68,7 @@ export default function UnlockPage({ onUnlock, onUnlockAdmin }) {
           {appCopy.unlock.button}
         </button>
         <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-          Ines can enter the special date, and Moses can enter the admin code here too.
+          Ines bisa memasukkan tanggal spesial, dan Moses juga bisa memasukkan kode admin di sini.
         </p>
       </motion.form>
     </section>

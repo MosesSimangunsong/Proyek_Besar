@@ -12,7 +12,7 @@ export function usePhotoboxCapture() {
     faceTracking,
   }) => {
     if (!video?.videoWidth || !video?.videoHeight) {
-      throw new Error('Camera preview is not ready yet.')
+      throw new Error('Pratinjau kamera belum siap.')
     }
 
     const { canvas, renderOutcome } = await renderCapturedPhoto({

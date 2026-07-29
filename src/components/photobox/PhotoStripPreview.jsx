@@ -1,7 +1,7 @@
-function getPreviewGrid(layoutId) {
-  return layoutId === 'grid-2x3'
-    ? 'repeat(2, minmax(0, 1fr))'
-    : 'minmax(0, 1fr)'
+const PREVIEW_COLUMN_WIDTH = '132px'
+
+function getPreviewGrid(layout) {
+  return `repeat(${layout.columns}, ${PREVIEW_COLUMN_WIDTH})`
 }
 
 export default function PhotoStripPreview({
@@ -21,10 +21,10 @@ export default function PhotoStripPreview({
     <section className="card" style={{ padding: '1rem', display: 'grid', gap: '0.9rem' }}>
       <div style={{ display: 'grid', gap: '0.3rem' }}>
         <p className="handwritten" style={{ margin: 0, fontSize: '1.7rem' }}>
-          Your tiny strip
+          Strip kecilmu
         </p>
         <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-          Preview each memory here. It should feel true to your chosen layout and effect, while the final PNG can be a little richer.
+          Lihat pratinjau tiap kenangan di sini. Tampilannya akan sesuai dengan tata letak dan efek pilihanmu, sementara PNG akhirnya bisa terlihat sedikit lebih kaya.
         </p>
       </div>
 
@@ -51,27 +51,28 @@ export default function PhotoStripPreview({
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: getPreviewGrid(layout.id),
-          gap: '0.85rem',
+          gridTemplateColumns: getPreviewGrid(layout),
+          justifyContent: 'center',
+          gap: '0.6rem',
         }}
       >
         {photos.map((photo, index) => (
           <article
             key={photo.id}
             style={{
-              borderRadius: 'var(--radius-lg)',
-              padding: '0.7rem',
+              borderRadius: 'var(--radius-md)',
+              padding: '0.4rem',
               background: theme.colors.background,
               border: `1px solid ${theme.colors.text}25`,
               boxShadow: 'var(--shadow-soft)',
               display: 'grid',
-              gap: '0.65rem',
+              gap: '0.4rem',
             }}
           >
             <div
               style={{
                 overflow: 'hidden',
-                borderRadius: 'var(--radius-md)',
+                borderRadius: 'var(--radius-sm)',
                 border: `2px solid ${theme.colors.text}25`,
                 aspectRatio: '3 / 4',
                 background: 'rgba(255, 255, 255, 0.45)',
@@ -79,23 +80,23 @@ export default function PhotoStripPreview({
             >
               <img
                 src={photo.dataUrl}
-                alt={`Photobox capture ${index + 1}`}
+                alt={`Hasil jepretan Photobox ${index + 1}`}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
 
-            <div style={{ display: 'grid', gap: '0.35rem' }}>
-              <p style={{ margin: 0, color: theme.colors.text, fontWeight: 600, fontSize: 'var(--text-sm)' }}>
-                Photo {index + 1}
+            <div style={{ display: 'grid', gap: '0.3rem' }}>
+              <p style={{ margin: 0, color: theme.colors.text, fontWeight: 600, fontSize: '0.7rem' }}>
+                Foto {index + 1}
               </p>
               <button
                 type="button"
                 className="button-secondary"
                 onClick={() => onRetake(index)}
                 disabled={isCapturing}
-                style={{ width: '100%', opacity: isCapturing ? 0.7 : 1 }}
+                style={{ width: '100%', opacity: isCapturing ? 0.7 : 1, padding: '0.35rem', fontSize: '0.7rem' }}
               >
-                {retakeIndex === index ? 'Retaking...' : 'Retake'}
+                {retakeIndex === index ? 'Mengambil ulang...' : 'Ambil Ulang'}
               </button>
             </div>
           </article>

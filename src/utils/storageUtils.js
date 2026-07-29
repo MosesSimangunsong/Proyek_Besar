@@ -2,12 +2,9 @@ export const storageKeys = {
   role: 'ines-love-site:role',
   unlock: 'ines-love-site:unlock',
   admin: 'ines-love-site:admin',
-  replies: 'ines-love-site:replies',
-  favorites: 'ines-love-site:favorites',
   music: 'ines-love-site:music',
   photosData: 'ines-love-site:photos-data',
   musicData: 'ines-love-site:music-data',
-  dailyData: 'ines-love-site:daily-data',
 }
 
 export function readStorage(key, fallback) {

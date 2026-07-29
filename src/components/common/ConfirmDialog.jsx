@@ -1,4 +1,4 @@
-export default function ConfirmDialog({ title, body, confirmLabel = 'Confirm', onConfirm, onCancel }) {
+export default function ConfirmDialog({ title, body, confirmLabel = 'Konfirmasi', onConfirm, onCancel }) {
   return (
     <div
       role="dialog"
@@ -20,7 +20,7 @@ export default function ConfirmDialog({ title, body, confirmLabel = 'Confirm', o
         </div>
         <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
           <button type="button" className="button-secondary" onClick={onCancel}>
-            Cancel
+            Batal
           </button>
           <button type="button" className="button-primary" onClick={onConfirm}>
             {confirmLabel}

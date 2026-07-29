@@ -5,8 +5,8 @@ export default function MusicControl({ track, isPlaying, error, onToggle }) {
     <button
       type="button"
       onClick={onToggle}
-      aria-label={isPlaying ? 'Turn music off' : 'Turn music on'}
-      title={track ? `${isPlaying ? 'Pause' : 'Play'} ${track.title}` : error || 'Our little song'}
+      aria-label={isPlaying ? 'Matikan musik' : 'Nyalakan musik'}
+      title={track ? `${isPlaying ? 'Jeda' : 'Putar'} ${track.title}` : error || 'Lagu kecil kita'}
       style={{
         position: 'fixed',
         right: '1rem',

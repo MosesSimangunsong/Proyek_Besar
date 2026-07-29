@@ -1,0 +1,150 @@
+.friv-portal {
+  width: 100%;
+}
+
+.friv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-4);
+}
+
+.friv-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: left;
+  transition:
+    transform var(--duration-fast) var(--ease-soft),
+    box-shadow var(--duration-fast) var(--ease-soft),
+    border-color var(--duration-fast) var(--ease-soft);
+}
+
+.friv-card:hover,
+.friv-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-floating);
+  border-color: var(--color-dusty-rose);
+}
+
+.friv-card:focus-visible {
+  outline: 2px solid var(--color-dusty-rose);
+  outline-offset: 2px;
+}
+
+.friv-thumb-wrap {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-cream);
+}
+
+.friv-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-normal) var(--ease-soft);
+}
+
+.friv-card:hover .friv-thumb,
+.friv-card:focus-visible .friv-thumb {
+  transform: scale(1.08);
+}
+
+.friv-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(74, 47, 37, 0.25);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-soft);
+}
+
+.friv-card:hover .friv-thumb-overlay,
+.friv-card:focus-visible .friv-thumb-overlay {
+  opacity: 1;
+}
+
+.friv-card-title {
+  padding: 0 var(--space-1) var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-deep-brown);
+}
+
+.friv-play {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.friv-play-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.friv-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1.1rem;
+  background: rgba(255, 253, 248, 0.92);
+  color: var(--color-deep-brown);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition:
+    transform var(--duration-fast) var(--ease-soft),
+    box-shadow var(--duration-fast) var(--ease-soft);
+}
+
+.friv-back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.friv-play-title {
+  font-family: "Playfair Display", serif;
+  font-size: var(--text-lg);
+  color: var(--color-deep-brown);
+}
+
+.friv-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-soft-charcoal);
+  box-shadow: var(--shadow-floating);
+}
+
+.friv-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 480px) {
+  .friv-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .friv-iframe-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+}

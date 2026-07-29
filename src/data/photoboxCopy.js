@@ -1,10 +1,10 @@
 export const photoboxCopy = {
-  privacyNote: 'Everything stays on your device, sayang. Nothing is uploaded.',
+  privacyNote: 'Semuanya tersimpan di perangkat kamu, sayang. Tidak ada yang diunggah.',
   introTitle: 'Photobox',
-  introSubtitle: 'Take tiny memories, sayang. Pick a little effect and let your smile stay here for a while.',
-  permissionError: 'I need your camera permission to make this little memory. Please allow camera access, sayang.',
-  cameraUnavailable: 'Your camera is not available right now. Try again from another device or browser.',
-  faceFallback: 'I can\'t find your face clearly, sayang. The effect will stay soft for now.',
-  faceLoading: 'Preparing this effect...',
-  startOverConfirm: 'Do you want to take these tiny memories again, sayang?',
+  introSubtitle: 'Ambil kenangan-kenangan kecil, sayang. Pilih efek kecil dan biarkan senyum kamu tersimpan di sini sebentar.',
+  permissionError: 'Aku butuh izin kamera kamu untuk membuat kenangan kecil ini. Tolong izinkan akses kamera, sayang.',
+  cameraUnavailable: 'Kamera kamu sedang tidak tersedia. Coba lagi dari perangkat atau browser lain.',
+  faceFallback: 'Aku belum bisa menemukan wajah kamu dengan jelas, sayang. Efeknya akan tetap lembut untuk sementara.',
+  faceLoading: 'Menyiapkan efek ini...',
+  startOverConfirm: 'Kamu mau ambil kenangan-kenangan kecil ini lagi, sayang?',
 }

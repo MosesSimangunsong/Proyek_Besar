@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 import CountdownOverlay from './CountdownOverlay'
+import LayoutPicker from './LayoutPicker'
 
 export default function CameraCanvasPreview({
   videoRef,
@@ -16,6 +17,10 @@ export default function CameraCanvasPreview({
   totalPhotos,
   isRetake,
   renderPreviewFrame,
+  layouts,
+  currentLayout,
+  onSelectLayout,
+  layoutPickerDisabled,
 }) {
   const animationFrameRef = useRef(null)
 
@@ -129,7 +134,7 @@ export default function CameraCanvasPreview({
                 Photobox
               </p>
               <p style={{ margin: 0 }}>
-                Start Camera when you&apos;re ready, then choose a memory style and your little effect.
+                Tekan Mulai Kamera saat kamu siap, lalu pilih gaya kenangan dan efek kecilmu.
               </p>
             </div>
           </div>
@@ -150,8 +155,17 @@ export default function CameraCanvasPreview({
               backdropFilter: 'blur(6px)',
             }}
           >
-            Waking up the camera preview...
+            Menyalakan pratinjau kamera...
           </div>
+        ) : null}
+
+        {layouts?.length ? (
+          <LayoutPicker
+            layouts={layouts}
+            selectedLayout={currentLayout}
+            onSelectLayout={onSelectLayout}
+            disabled={layoutPickerDisabled}
+          />
         ) : null}
 
         <CountdownOverlay
@@ -168,7 +182,7 @@ export default function CameraCanvasPreview({
             {selectedTheme.name}
           </p>
           <p style={{ margin: 0, color: selectedTheme.colors.text, fontSize: 'var(--text-sm)' }}>
-            Effect: {selectedEffect.name}
+            Efek: {selectedEffect.name}
           </p>
         </div>
       </div>

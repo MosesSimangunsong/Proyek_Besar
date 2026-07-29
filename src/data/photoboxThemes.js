@@ -3,9 +3,9 @@ import { createThumbnailDataUri } from '../utils/imageAssetUtils'
 export const photoboxThemes = [
   {
     id: 'vintage-photobooth',
-    name: 'Vintage Photobooth',
-    description: 'Like a soft old strip tucked inside a keepsake box.',
-    supportedLayouts: ['grid-2x3', 'strip-1x3'],
+    name: 'Photobooth Vintage',
+    description: 'Seperti strip foto lawas yang lembut, tersimpan di dalam kotak kenangan.',
+    supportedLayouts: ['grid-2x3', 'strip-1x3', 'grid-2x2', 'polaroid-single'],
     thumbnail: createThumbnailDataUri({ label: 'Vintage', top: '#fff8ef', bottom: '#e8d3b9', accent: '#c9a978' }),
     colors: {
       background: '#fff8ef',
@@ -20,9 +20,9 @@ export const photoboxThemes = [
   },
   {
     id: 'old-paper-album',
-    name: 'Old Paper Album',
-    description: 'Warm paper, tiny tape corners, and old-album nostalgia.',
-    supportedLayouts: ['grid-2x3', 'strip-1x3'],
+    name: 'Album Kertas Lawas',
+    description: 'Kertas hangat, sudut selotip kecil, dan nostalgia album lawas.',
+    supportedLayouts: ['grid-2x3', 'strip-1x3', 'grid-2x2', 'polaroid-single'],
     thumbnail: createThumbnailDataUri({ label: 'Album', top: '#f5ebdd', bottom: '#dcc4a0', accent: '#a77a4f' }),
     colors: {
       background: '#f4eadb',
@@ -37,9 +37,9 @@ export const photoboxThemes = [
   },
   {
     id: 'polaroid-collage',
-    name: 'Polaroid Collage',
-    description: 'Little polaroids arranged like a handmade note.',
-    supportedLayouts: ['grid-2x3'],
+    name: 'Kolase Polaroid',
+    description: 'Polaroid-polaroid kecil disusun seperti catatan buatan tangan.',
+    supportedLayouts: ['grid-2x3', 'grid-2x2'],
     thumbnail: createThumbnailDataUri({ label: 'Polaroid', top: '#fffdf8', bottom: '#ebddd3', accent: '#d9b79a' }),
     colors: {
       background: '#f8f0e8',
@@ -54,9 +54,9 @@ export const photoboxThemes = [
   },
   {
     id: 'vhs-camcorder',
-    name: 'VHS Camcorder',
-    description: 'A softer camcorder memory with tiny timestamps.',
-    supportedLayouts: ['grid-2x3', 'strip-1x3'],
+    name: 'Kamera VHS',
+    description: 'Kenangan kamera video yang lembut dengan stempel waktu kecil.',
+    supportedLayouts: ['grid-2x3', 'strip-1x3', 'grid-2x2', 'polaroid-single'],
     thumbnail: createThumbnailDataUri({ label: 'VHS', top: '#2a2a30', bottom: '#5a5256', accent: '#8bb0c6', text: '#fffdf8' }),
     colors: {
       background: '#28292d',
@@ -71,9 +71,9 @@ export const photoboxThemes = [
   },
   {
     id: 'cassette-tape',
-    name: 'Cassette Tape',
-    description: 'A warm label-style keepsake inspired by cassette covers.',
-    supportedLayouts: ['grid-2x3', 'strip-1x3'],
+    name: 'Kaset Pita',
+    description: 'Kenangan bergaya label hangat yang terinspirasi dari sampul kaset.',
+    supportedLayouts: ['grid-2x3', 'strip-1x3', 'grid-2x2', 'polaroid-single'],
     thumbnail: createThumbnailDataUri({ label: 'Cassette', top: '#f7ead8', bottom: '#d7c1a6', accent: '#8e7442' }),
     colors: {
       background: '#f8eedf',
@@ -88,10 +88,10 @@ export const photoboxThemes = [
   },
   {
     id: 'scrapbook-page',
-    name: 'Scrapbook Page',
-    description: 'Paper notes, little tape, and soft handwritten warmth.',
-    supportedLayouts: ['grid-2x3', 'strip-1x3'],
-    thumbnail: createThumbnailDataUri({ label: 'Scrapbook', top: '#fff9f2', bottom: '#f0d8c0', accent: '#d99aa3' }),
+    name: 'Halaman Buku Kenangan',
+    description: 'Catatan kertas, selotip kecil, dan kehangatan tulisan tangan yang lembut.',
+    supportedLayouts: ['grid-2x3', 'strip-1x3', 'grid-2x2', 'polaroid-single'],
+    thumbnail: createThumbnailDataUri({ label: 'Buku Kenangan', top: '#fff9f2', bottom: '#f0d8c0', accent: '#d99aa3' }),
     colors: {
       background: '#fff8f0',
       secondary: '#efd3be',
@@ -105,10 +105,10 @@ export const photoboxThemes = [
   },
   {
     id: 'analog-film-contact-sheet',
-    name: 'Analog Film Contact Sheet',
-    description: 'Dark contact sheet framing with analog texture.',
-    supportedLayouts: ['grid-2x3'],
-    thumbnail: createThumbnailDataUri({ label: 'Contact', top: '#161616', bottom: '#403a32', accent: '#d3c09c', text: '#fff7de' }),
+    name: 'Lembar Kontak Film Analog',
+    description: 'Bingkai lembar kontak gelap dengan tekstur analog.',
+    supportedLayouts: ['grid-2x3', 'grid-2x2'],
+    thumbnail: createThumbnailDataUri({ label: 'Kontak', top: '#161616', bottom: '#403a32', accent: '#d3c09c', text: '#fff7de' }),
     colors: {
       background: '#171717',
       secondary: '#403a32',
@@ -122,9 +122,9 @@ export const photoboxThemes = [
   },
   {
     id: 'romantic-dusty-rose',
-    name: 'Romantic Dusty Rose',
-    description: 'Dusty rose, soft glow, and a gentle little heart.',
-    supportedLayouts: ['grid-2x3', 'strip-1x3'],
+    name: 'Dusty Rose Romantis',
+    description: 'Dusty rose, cahaya lembut, dan hati kecil yang manis.',
+    supportedLayouts: ['grid-2x3', 'strip-1x3', 'grid-2x2', 'polaroid-single'],
     thumbnail: createThumbnailDataUri({ label: 'Dusty Rose', top: '#fff6f6', bottom: '#e9ced3', accent: '#d68792', text: '#5e3940' }),
     colors: {
       background: '#fff6f6',

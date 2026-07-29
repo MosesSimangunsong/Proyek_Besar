@@ -1,7 +1,7 @@
 export const musicTracks = [
   {
     id: 'music-001',
-    title: 'Our Little Song',
+    title: 'Lagu Kecil Kita',
     artist: 'For Ines',
     src: '/audio/audio1.mp3',
     audio_url: '/audio/audio1.mp3',

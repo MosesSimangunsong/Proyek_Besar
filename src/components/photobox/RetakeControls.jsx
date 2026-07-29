@@ -4,10 +4,10 @@ export default function RetakeControls({ photosCount, totalPhotos, retakeIndex, 
   }
 
   const helperText = retakeIndex !== null
-    ? `Retaking photo ${retakeIndex + 1}. Hold still for a tiny countdown.`
+    ? `Mengambil ulang foto ke-${retakeIndex + 1}. Diam sebentar untuk hitung mundur kecil.`
     : isCapturing
-      ? 'Saving a fresh little memory...'
-      : `${photosCount} of ${totalPhotos} photos ready for ${selectedLayout.name}.`
+      ? 'Menyimpan kenangan kecil yang baru...'
+      : `${photosCount} dari ${totalPhotos} foto siap untuk ${selectedLayout.name}.`
 
   return (
     <div
@@ -23,7 +23,7 @@ export default function RetakeControls({ photosCount, totalPhotos, retakeIndex, 
     >
       <div style={{ display: 'grid', gap: '0.2rem' }}>
         <p className="handwritten" style={{ margin: 0, fontSize: '1.45rem' }}>
-          Retake if you want
+          Ambil ulang kalau kamu mau
         </p>
         <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>{helperText}</p>
       </div>

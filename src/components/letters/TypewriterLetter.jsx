@@ -3,7 +3,7 @@ export default function TypewriterLetter({ letter }) {
     <article className="paper-panel animate-gentle-glow">
       <div className="stack-md">
         <div>
-          <span className="eyebrow">Mood • {letter.mood}</span>
+          <span className="eyebrow">Suasana Hati • {letter.mood}</span>
           <h2 className="page-title" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', marginTop: '0.5rem' }}>
             {letter.title}
           </h2>

@@ -16,16 +16,14 @@ import { appCopy } from '../data/appCopy'
 import { getPhotos } from '../services/photosService'
 
 const featureCards = [
-  { to: '/gallery', title: 'Little pieces of us', body: 'A scrapbook gallery of photos I want us to keep close.' },
-  { to: '/daily', title: "Today's little note", body: 'A small reminder picked just for today.' },
-  { to: '/photobox', title: 'A tiny photobox moment', body: 'Step in, smile a little, and keep another sweet memory with us.' },
-  { to: '/saved', title: 'Saved feelings', body: 'Come back to the ones you want to read again.' },
+  { to: '/gallery', title: 'Kepingan kecil tentang kita', body: 'Gallery berisi foto-foto scrapbook yang ingin aku simpan dekat dengan kita.' },
+  { to: '/photobox', title: 'Momen kecil di Photobox', body: 'Masuklah, tersenyum sedikit, dan simpan satu lagi kenangan manis bersama kita.' },
 ]
 
 const pixelTransitionPairs = [
-  { id: 'memory-1', before: img1, after: img4, title: 'Little glance' },
-  { id: 'memory-2', before: img2, after: img5, title: 'Warm pause' },
-  { id: 'memory-3', before: img3, after: img6, title: 'Soft chaos' },
+  { id: 'memory-1', before: img1, after: img4, title: 'Lirikan kecil' },
+  { id: 'memory-2', before: img2, after: img5, title: 'Jeda hangat' },
+  { id: 'memory-3', before: img3, after: img6, title: 'Kekacauan lembut' },
 ]
 
 export default function HomePage() {
@@ -80,8 +78,8 @@ export default function HomePage() {
                   }}
                 >
                   <PixelTransition
-                    firstContent={<img src={pair.before} alt={`${pair.title} first memory`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
-                    secondContent={<img src={pair.after} alt={`${pair.title} second memory`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+                    firstContent={<img src={pair.before} alt={`${pair.title} kenangan pertama`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+                    secondContent={<img src={pair.after} alt={`${pair.title} kenangan kedua`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
                     gridSize={8}
                     pixelColor="#fff8ef"
                     animationStepDuration={0.38}
@@ -112,9 +110,9 @@ export default function HomePage() {
         <section className="stack-md">
           <div>
             <h2 className="page-title" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
-              Start anywhere your heart wants.
+              Mulai dari mana pun hatimu mau.
             </h2>
-            <p className="page-subtitle">Each page keeps the same warm feeling, but with its own little story.</p>
+            <p className="page-subtitle">Setiap halaman punya kehangatan yang sama, tapi dengan cerita kecilnya sendiri.</p>
           </div>
           <div
             style={{
@@ -131,7 +129,7 @@ export default function HomePage() {
                 tilt={index % 2 === 0 ? 'left' : 'right'}
                 action={
                   <Link to={card.to} className="button-primary" style={{ display: 'inline-flex', width: 'fit-content' }}>
-                    Open
+                    Buka
                   </Link>
                 }
               />

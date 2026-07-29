@@ -14,10 +14,10 @@ export default function PhotoboxControls({
     <div className="card" style={{ padding: '1rem', display: 'grid', gap: '0.85rem' }}>
       <div style={{ display: 'grid', gap: '0.5rem' }}>
         <p className="handwritten" style={{ margin: 0, fontSize: '1.7rem' }}>
-          Little controls
+          Kontrol kecil
         </p>
         <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-          Camera stays off until you ask for it, and every capture will pause for a five-second countdown.
+          Kamera akan tetap mati sampai kamu menyalakannya, dan tiap pengambilan foto akan berhenti sejenak untuk hitung mundur lima detik.
         </p>
       </div>
 
@@ -29,7 +29,7 @@ export default function PhotoboxControls({
           disabled={isCapturing}
           style={{ width: '100%' }}
         >
-          {isCameraActive ? 'Refresh Camera' : 'Start Camera'}
+          {isCameraActive ? 'Segarkan Kamera' : 'Mulai Kamera'}
         </button>
 
         <button
@@ -39,7 +39,7 @@ export default function PhotoboxControls({
           disabled={!canStartCapture}
           style={{ width: '100%', opacity: canStartCapture ? 1 : 0.65 }}
         >
-          {isCapturing ? 'Capturing tiny memories...' : 'Start Photobox'}
+          {isCapturing ? 'Menangkap kenangan kecil...' : 'Mulai Photobox'}
         </button>
 
         <button
@@ -49,7 +49,7 @@ export default function PhotoboxControls({
           disabled={!hasPhotos || isCapturing}
           style={{ width: '100%', opacity: hasPhotos && !isCapturing ? 1 : 0.65 }}
         >
-          Retake All
+          Ambil Ulang Semua
         </button>
 
         <button
@@ -59,7 +59,7 @@ export default function PhotoboxControls({
           disabled={!canDownload || isGenerating}
           style={{ width: '100%', opacity: canDownload && !isGenerating ? 1 : 0.65 }}
         >
-          {isGenerating ? 'Preparing your PNG...' : 'Download Photobox'}
+          {isGenerating ? 'Menyiapkan PNG kamu...' : 'Unduh Photobox'}
         </button>
       </div>
     </div>

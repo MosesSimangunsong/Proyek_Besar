@@ -5,10 +5,10 @@ export default function ThemePicker({ themes, selectedTheme, selectedLayoutId, o
     <section className="card" style={{ padding: '1rem', display: 'grid', gap: '0.9rem' }}>
       <div>
         <p className="handwritten" style={{ margin: 0, fontSize: '1.65rem' }}>
-          Pick a memory style
+          Pilih gaya kenangan
         </p>
         <p style={{ margin: '0.35rem 0 0', color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-          The final PNG can be richer, but this choice sets its overall mood.
+          PNG akhirnya bisa terlihat lebih kaya, tapi pilihan ini menentukan suasana keseluruhannya.
         </p>
       </div>
 

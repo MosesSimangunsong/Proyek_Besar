@@ -12,41 +12,38 @@ function formatLongDate(date = new Date()) {
 }
 
 function getPhotoSlots(layout, canvasWidth, canvasHeight) {
-  if (layout.id === 'grid-2x3') {
-    const paddingX = 80
-    const paddingTop = 170
-    const paddingBottom = 140
-    const gapX = 32
-    const gapY = 34
-    const photoWidth = (canvasWidth - (paddingX * 2) - gapX) / 2
-    const photoHeight = (canvasHeight - paddingTop - paddingBottom - (gapY * 2)) / 3
+  if (layout.photoCount === 1) {
+    const paddingX = canvasWidth * 0.14
+    const paddingTop = 190
+    const paddingBottom = 160
 
-    return Array.from({ length: 6 }, (_, index) => {
-      const column = index % 2
-      const row = Math.floor(index / 2)
-
-      return {
-        x: paddingX + (column * (photoWidth + gapX)),
-        y: paddingTop + (row * (photoHeight + gapY)),
-        width: photoWidth,
-        height: photoHeight,
-      }
-    })
+    return [{
+      x: paddingX,
+      y: paddingTop,
+      width: canvasWidth - (paddingX * 2),
+      height: canvasHeight - paddingTop - paddingBottom,
+    }]
   }
 
-  const paddingX = 72
+  const paddingX = layout.columns > 1 ? 80 : 72
   const paddingTop = 170
   const paddingBottom = 140
-  const gapY = 28
-  const photoWidth = canvasWidth - (paddingX * 2)
-  const photoHeight = (canvasHeight - paddingTop - paddingBottom - (gapY * 2)) / 3
+  const gapX = 32
+  const gapY = layout.rows > 1 ? (layout.columns > 1 ? 34 : 28) : 0
+  const photoWidth = (canvasWidth - (paddingX * 2) - (gapX * (layout.columns - 1))) / layout.columns
+  const photoHeight = (canvasHeight - paddingTop - paddingBottom - (gapY * (layout.rows - 1))) / layout.rows
 
-  return Array.from({ length: 3 }, (_, index) => ({
-    x: paddingX,
-    y: paddingTop + (index * (photoHeight + gapY)),
-    width: photoWidth,
-    height: photoHeight,
-  }))
+  return Array.from({ length: layout.photoCount }, (_, index) => {
+    const column = index % layout.columns
+    const row = Math.floor(index / layout.columns)
+
+    return {
+      x: paddingX + (column * (photoWidth + gapX)),
+      y: paddingTop + (row * (photoHeight + gapY)),
+      width: photoWidth,
+      height: photoHeight,
+    }
+  })
 }
 
 function drawHeader(ctx, width, theme) {
@@ -64,7 +61,7 @@ function drawHeader(ctx, width, theme) {
 function drawFooter(ctx, width, height, theme) {
   ctx.font = '500 24px "Trebuchet MS", sans-serif'
   ctx.fillStyle = `${theme.colors.text}CC`
-  ctx.fillText('our little place', 76, height - 82)
+  ctx.fillText('tempat kecil kita', 76, height - 82)
   ctx.fillText('230624', width - 148, height - 82)
 }
 
@@ -131,7 +128,7 @@ function drawThemeDecorations(ctx, canvasWidth, canvasHeight, theme, layout) {
       break
   }
 
-  if (layout.id === 'strip-1x3' && theme.id !== 'analog-film-contact-sheet') {
+  if (layout.columns === 1 && layout.photoCount > 1 && theme.id !== 'analog-film-contact-sheet') {
     ctx.save()
     ctx.strokeStyle = `${theme.colors.text}22`
     ctx.lineWidth = 2
@@ -169,7 +166,7 @@ export async function generatePhotoboxFinalImage({
   const ctx = canvas.getContext('2d')
 
   if (!ctx) {
-    throw new Error('Canvas context is not available.')
+    throw new Error('Konteks kanvas tidak tersedia.')
   }
 
   const { width, height } = canvas
@@ -190,7 +187,7 @@ export async function generatePhotoboxFinalImage({
     if (theme.id === 'polaroid-collage') {
       drawPolaroidFrame(ctx, image, {
         ...slot,
-        rotation: index % 2 === 0 ? -0.045 : 0.042,
+        rotation: images.length === 1 ? -0.02 : (index % 2 === 0 ? -0.045 : 0.042),
       }, theme)
       return
     }

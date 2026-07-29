@@ -8,7 +8,7 @@ export default function MemoryDomeSection({ photos = [] }) {
     .map((photo) => ({
       id: photo.id,
       src: photo.image_url || photo.src,
-      alt: photo.caption || photo.title || 'Memory photo',
+      alt: photo.caption || photo.title || 'Foto kenangan',
     }))
     .filter((photo) => photo.src)
 
@@ -17,11 +17,11 @@ export default function MemoryDomeSection({ photos = [] }) {
       <div className="memory-dome-section">
         <div className="memory-dome-header">
           <span className="eyebrow">Memory Dome</span>
-          <p>Another way to wander through our little archive of moments.</p>
+          <p>Cara lain untuk menjelajahi arsip kecil momen-momen kita.</p>
         </div>
         <EmptyState
-          title="No memories here just yet"
-          body="When photos are ready, this dome will turn into a soft little room full of keepsakes."
+          title="Belum ada kenangan di sini"
+          body="Saat foto-foto sudah siap, dome ini akan berubah menjadi ruang kecil yang hangat, penuh kenangan."
         />
       </div>
     )

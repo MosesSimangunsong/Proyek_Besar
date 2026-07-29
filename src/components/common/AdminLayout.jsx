@@ -1,12 +1,10 @@
-import { LayoutDashboard, Image as ImageIcon, ListMusic, LogOut, Mail, Sparkles } from 'lucide-react'
+import { LayoutDashboard, Image as ImageIcon, ListMusic, LogOut } from 'lucide-react'
 import { NavLink, Outlet } from 'react-router-dom'
 
 const navItems = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/admin/replies', label: 'Replies', icon: Mail },
   { to: '/admin/photos', label: 'Photos', icon: ImageIcon },
   { to: '/admin/music', label: 'Music', icon: ListMusic },
-  { to: '/admin/daily-messages', label: 'Daily', icon: Sparkles },
 ]
 
 export default function AdminLayout({ onLogout, toast, onCloseToast, outletContext }) {

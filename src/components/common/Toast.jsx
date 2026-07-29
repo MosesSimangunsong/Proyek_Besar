@@ -36,8 +36,8 @@ export default function Toast({ toast, onClose }) {
     >
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', justifyContent: 'space-between' }}>
         <p style={{ margin: 0, color: 'var(--color-deep-brown)', fontSize: 'var(--text-sm)' }}>{toast.message}</p>
-        <button type="button" className="button-ghost" onClick={onClose} aria-label="Close message">
-          Close
+        <button type="button" className="button-ghost" onClick={onClose} aria-label="Tutup pesan">
+          Tutup
         </button>
       </div>
     </div>

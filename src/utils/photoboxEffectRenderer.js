@@ -1,5 +1,5 @@
 import { drawFaceOverlay, getFaceAnchorPoints, getFaceRollAngle, getFaceWidth } from './faceOverlayUtils'
-import { drawHeart, drawFilmGrain, drawLightLeak, drawScanLines, drawSparkle, drawDustAndScratch, drawWashiTape, drawStampBox } from './vintageEffectsUtils'
+import { drawHeart, drawFilmGrain, drawLightLeak, drawScanLines, drawSparkle, drawDustAndScratch, drawWashiTape } from './vintageEffectsUtils'
 
 function drawFloatingHearts(ctx, width, height) {
   const hearts = [
@@ -23,36 +23,6 @@ function drawSparkleField(ctx, width, height) {
   sparkles.forEach(([x, y, size]) => drawSparkle(ctx, x, y, size))
 }
 
-function drawPaperNote(ctx, width, height) {
-  ctx.save()
-  ctx.translate(width * 0.63, height * 0.62)
-  ctx.rotate(-0.08)
-  ctx.fillStyle = 'rgba(255, 250, 234, 0.92)'
-  ctx.fillRect(0, 0, width * 0.24, height * 0.18)
-  ctx.strokeStyle = 'rgba(122, 92, 75, 0.4)'
-  ctx.lineWidth = 2
-  ctx.strokeRect(0, 0, width * 0.24, height * 0.18)
-  ctx.fillStyle = 'rgba(122, 92, 75, 0.9)'
-  ctx.font = `${Math.max(18, width * 0.035)}px "Brush Script MT", cursive`
-  ctx.fillText('for Ines', width * 0.04, height * 0.1)
-  ctx.restore()
-}
-
-function drawForInesSticker(ctx, width, height) {
-  ctx.save()
-  ctx.fillStyle = 'rgba(255, 248, 239, 0.86)'
-  ctx.strokeStyle = 'rgba(201, 143, 143, 0.85)'
-  ctx.lineWidth = 3
-  ctx.beginPath()
-  ctx.roundRect(width * 0.1, height * 0.08, width * 0.32, height * 0.1, 18)
-  ctx.fill()
-  ctx.stroke()
-  ctx.fillStyle = '#5e3940'
-  ctx.font = `${Math.max(20, width * 0.044)}px Georgia, serif`
-  ctx.fillText('For Ines', width * 0.145, height * 0.145)
-  ctx.restore()
-}
-
 function drawSoftGlow(ctx, width, height) {
   const gradient = ctx.createRadialGradient(width * 0.5, height * 0.45, width * 0.06, width * 0.5, height * 0.45, width * 0.62)
   gradient.addColorStop(0, 'rgba(255,255,255,0.18)')
@@ -74,20 +44,6 @@ function drawVhsTimestamp(ctx, width, height) {
   ctx.restore()
 }
 
-function drawDoodleHearts(ctx, width, height) {
-  ctx.save()
-  ctx.strokeStyle = 'rgba(122, 92, 75, 0.75)'
-  ctx.lineWidth = 4
-  ctx.lineCap = 'round'
-  ctx.beginPath()
-  ctx.moveTo(width * 0.12, height * 0.75)
-  ctx.quadraticCurveTo(width * 0.16, height * 0.69, width * 0.21, height * 0.74)
-  ctx.moveTo(width * 0.76, height * 0.16)
-  ctx.quadraticCurveTo(width * 0.81, height * 0.1, width * 0.86, height * 0.15)
-  ctx.stroke()
-  ctx.restore()
-}
-
 function drawOverlayById(ctx, overlayId, width, height) {
   switch (overlayId) {
     case 'film-grain':
@@ -106,9 +62,6 @@ function drawOverlayById(ctx, overlayId, width, height) {
     case 'soft-glow':
       drawSoftGlow(ctx, width, height)
       break
-    case 'romantic-sparkle':
-      drawSparkleField(ctx, width, height)
-      break
     case 'floating-hearts':
       drawFloatingHearts(ctx, width, height)
       break
@@ -118,18 +71,6 @@ function drawOverlayById(ctx, overlayId, width, height) {
     case 'washi-tape':
       drawWashiTape(ctx, width * 0.08, height * 0.08, width * 0.22, height * 0.04)
       drawWashiTape(ctx, width * 0.7, height * 0.78, width * 0.2, height * 0.04, 'rgba(252, 226, 196, 0.78)', 0.11)
-      break
-    case 'for-ines-sticker':
-      drawForInesSticker(ctx, width, height)
-      break
-    case 'love-stamp':
-      drawStampBox(ctx, width * 0.72, height * 0.08, width * 0.16)
-      break
-    case 'paper-note':
-      drawPaperNote(ctx, width, height)
-      break
-    case 'doodle-hearts':
-      drawDoodleHearts(ctx, width, height)
       break
     case 'old-paper-haze':
       drawOldPaperHaze(ctx, width, height)
@@ -196,17 +137,6 @@ export function applyEffectToCanvas(ctx, {
   effect.stickers?.forEach((stickerId) => drawOverlayById(ctx, stickerId, width, height))
 
   const faceApplied = drawFaceEffect(ctx, effect, faceTracking, width, height)
-
-  if (effect.id === 'vintage-date-night') {
-    drawLightLeak(ctx, width, height, 'rgba(255, 185, 129, 0.24)')
-    drawFilmGrain(ctx, width, height, 0.08)
-  }
-
-  if (effect.id === 'scrapbook-love') {
-    drawWashiTape(ctx, width * 0.08, height * 0.07, width * 0.23, height * 0.042)
-    drawWashiTape(ctx, width * 0.7, height * 0.08, width * 0.2, height * 0.038, 'rgba(252, 234, 210, 0.72)', 0.18)
-    drawDoodleHearts(ctx, width, height)
-  }
 
   return { faceApplied }
 }

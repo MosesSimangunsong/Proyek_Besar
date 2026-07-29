@@ -20,7 +20,7 @@ export default function CountdownOverlay({ countdown, currentCaptureIndex, total
     >
       <div style={{ display: 'grid', gap: '0.5rem' }}>
         <p style={{ margin: 0, fontSize: '0.9rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-          {isRetake ? `Retaking photo ${currentCaptureIndex + 1}` : `Photo ${currentCaptureIndex + 1} of ${totalPhotos}`}
+          {isRetake ? `Mengambil ulang foto ke-${currentCaptureIndex + 1}` : `Foto ke-${currentCaptureIndex + 1} dari ${totalPhotos}`}
         </p>
         <p
           className="handwritten"

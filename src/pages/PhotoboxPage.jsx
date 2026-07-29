@@ -6,7 +6,6 @@ import CameraCanvasPreview from '../components/photobox/CameraCanvasPreview'
 import CameraErrorState from '../components/photobox/CameraErrorState'
 import EffectPicker from '../components/photobox/EffectPicker'
 import FaceTrackingStatus from '../components/photobox/FaceTrackingStatus'
-import LayoutPicker from '../components/photobox/LayoutPicker'
 import PhotoboxControls from '../components/photobox/PhotoboxControls'
 import PhotoboxResult from '../components/photobox/PhotoboxResult'
 import PhotoStripPreview from '../components/photobox/PhotoStripPreview'
@@ -153,7 +152,7 @@ export default function PhotoboxPage() {
           countdownIntervalRef.current = null
         }
 
-        setCountdown('Smile, sayang!')
+        setCountdown('Senyum, sayang!')
         countdownTimeoutRef.current = window.setTimeout(() => {
           countdownTimeoutRef.current = null
           setCountdown(null)
@@ -258,7 +257,7 @@ export default function PhotoboxPage() {
 
     if (started) {
       setUiError('')
-      outletContext?.showToast('Camera is ready for our tiny photobox.', 'success')
+      outletContext?.showToast('Kamera sudah siap untuk Photobox kecil kita.', 'success')
     } else {
       outletContext?.showToast(cameraError || photoboxCopy.permissionError, 'error')
     }
@@ -322,11 +321,11 @@ export default function PhotoboxPage() {
         setUiError(photoboxCopy.faceFallback)
       }
 
-      outletContext?.showToast(`Your ${layout.photoCount} tiny memories are ready.`, 'success')
+      outletContext?.showToast(`${layout.photoCount} kenangan kecil kita sudah siap.`, 'success')
     } catch (error) {
       if (error.message !== 'Countdown cancelled.') {
-        setUiError('The camera missed that moment. Let\'s try again, sayang.')
-        outletContext?.showToast('The camera missed that moment. Let\'s try again, sayang.', 'error')
+        setUiError('Kamera melewatkan momen itu. Yuk, coba lagi, sayang.')
+        outletContext?.showToast('Kamera melewatkan momen itu. Yuk, coba lagi, sayang.', 'error')
       }
     } finally {
       clearCountdownTimers()
@@ -370,11 +369,11 @@ export default function PhotoboxPage() {
         return newPhoto
       }))
 
-      outletContext?.showToast(`Photo ${index + 1} got a fresh little retake.`, 'success')
+      outletContext?.showToast(`Foto ${index + 1} baru saja diambil ulang.`, 'success')
     } catch (error) {
       if (error.message !== 'Countdown cancelled.') {
-        setUiError('The camera missed that moment. Let\'s try again, sayang.')
-        outletContext?.showToast('The camera missed that moment. Let\'s try again, sayang.', 'error')
+        setUiError('Kamera melewatkan momen itu. Yuk, coba lagi, sayang.')
+        outletContext?.showToast('Kamera melewatkan momen itu. Yuk, coba lagi, sayang.', 'error')
       }
     } finally {
       clearCountdownTimers()
@@ -395,13 +394,13 @@ export default function PhotoboxPage() {
     setLockedTheme(null)
     setLockedEffect(null)
     setShowRetakeAllConfirm(false)
-    outletContext?.showToast('The strip is cleared. We can start over anytime.', 'info')
+    outletContext?.showToast('Stripnya sudah dibersihkan. Kita bisa mulai lagi kapan saja.', 'info')
   }, [clearCountdownTimers, outletContext, resetSessionImages])
 
   const handleDownload = useCallback(async () => {
     if (!lockedLayout || !lockedTheme || capturedPhotos.length !== lockedLayout.photoCount) {
-      setUiError('Take all tiny memories first, sayang.')
-      outletContext?.showToast('Take all tiny memories first, sayang.', 'error')
+      setUiError('Ambil dulu semua kenangan kecilnya, sayang.')
+      outletContext?.showToast('Ambil dulu semua kenangan kecilnya, sayang.', 'error')
       return
     }
 
@@ -428,10 +427,10 @@ export default function PhotoboxPage() {
         downloadDataUrl(result.dataUrl, result.filename)
       }
 
-      outletContext?.showToast('Your little photobox is ready.', 'success')
+      outletContext?.showToast('Photobox kecilmu sudah siap.', 'success')
     } catch {
-      setUiError('I couldn\'t save this little memory yet. Try again, sayang.')
-      outletContext?.showToast('I couldn\'t save this little memory yet. Try again, sayang.', 'error')
+      setUiError('Aku belum bisa menyimpan kenangan kecil ini. Coba lagi, sayang.')
+      outletContext?.showToast('Aku belum bisa menyimpan kenangan kecil ini. Coba lagi, sayang.', 'error')
     } finally {
       setIsGenerating(false)
     }
@@ -439,23 +438,23 @@ export default function PhotoboxPage() {
 
   const pageStatus = useMemo(() => {
     if (isCapturing && retakeIndex !== null) {
-      return `Retaking photo ${retakeIndex + 1}...`
+      return `Mengambil ulang foto ${retakeIndex + 1}...`
     }
 
     if (isCapturing) {
-      return `Capturing photo ${currentCaptureIndex + 1} of ${totalPhotos}...`
+      return `Mengambil foto ${currentCaptureIndex + 1} dari ${totalPhotos}...`
     }
 
     if (hasAllPhotos) {
-      return `All ${totalPhotos} tiny memories are ready for preview and download.`
+      return `Semua ${totalPhotos} kenangan kecil sudah siap untuk dilihat dan diunduh.`
     }
 
     if (capturedPhotos.length > 0) {
-      return `${capturedPhotos.length} of ${totalPhotos} photos captured.`
+      return `${capturedPhotos.length} dari ${totalPhotos} foto sudah diambil.`
     }
 
     if (isCameraActive) {
-      return 'Camera ready. Pick a layout, choose a memory style, then start the photobox.'
+      return 'Kamera siap. Pilih layout, pilih gaya kenangan, lalu mulai Photobox.'
     }
 
   }, [capturedPhotos.length, currentCaptureIndex, hasAllPhotos, isCameraActive, isCapturing, retakeIndex, totalPhotos])
@@ -488,6 +487,17 @@ export default function PhotoboxPage() {
               totalPhotos={totalPhotos}
               isRetake={retakeIndex !== null}
               renderPreviewFrame={renderPreviewFrame}
+              layouts={photoboxLayouts}
+              currentLayout={selectedLayout}
+              onSelectLayout={handleSelectLayout}
+              layoutPickerDisabled={isCapturing || capturedPhotos.length > 0}
+            />
+
+            <EffectPicker
+              effects={photoboxEffects}
+              selectedEffect={selectedEffect}
+              onSelectEffect={setSelectedEffect}
+              disabled={isCapturing || capturedPhotos.length > 0}
             />
 
             <RetakeControls
@@ -540,25 +550,11 @@ export default function PhotoboxPage() {
               isPerformanceFallback={isPerformanceFallback}
             />
 
-            <LayoutPicker
-              layouts={photoboxLayouts}
-              selectedLayout={selectedLayout}
-              onSelectLayout={handleSelectLayout}
-              disabled={isCapturing || capturedPhotos.length > 0}
-            />
-
             <ThemePicker
               themes={photoboxThemes}
               selectedTheme={selectedTheme}
               selectedLayoutId={selectedLayout.id}
               onSelectTheme={setSelectedTheme}
-              disabled={isCapturing || capturedPhotos.length > 0}
-            />
-
-            <EffectPicker
-              effects={photoboxEffects}
-              selectedEffect={selectedEffect}
-              onSelectEffect={setSelectedEffect}
               disabled={isCapturing || capturedPhotos.length > 0}
             />
           </div>
@@ -567,9 +563,9 @@ export default function PhotoboxPage() {
 
       {showRetakeAllConfirm ? (
         <ConfirmDialog
-          title="Take them again?"
+          title="Ambil ulang semuanya?"
           body={photoboxCopy.startOverConfirm}
-          confirmLabel="Retake All"
+          confirmLabel="Ambil Ulang Semua"
           onConfirm={confirmRetakeAll}
           onCancel={() => setShowRetakeAllConfirm(false)}
         />

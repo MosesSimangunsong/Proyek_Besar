@@ -8,17 +8,14 @@ import { useAuthGate } from './hooks/useAuthGate'
 import { useMusicPlayer } from './hooks/useMusicPlayer'
 import { useRoleGuard } from './hooks/useRoleGuard'
 import { useToast } from './hooks/useToast'
-import DailyPage from './pages/DailyPage'
 import GalleryPage from './pages/GalleryPage'
+import GamesPage from './pages/GamesPage'
 import HomePage from './pages/HomePage'
 import PhotoboxPage from './pages/PhotoboxPage'
-import SavedPage from './pages/SavedPage'
 import UnlockPage from './pages/UnlockPage'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage'
-import AdminDailyMessagesPage from './pages/admin/AdminDailyMessagesPage'
 import AdminMusicPage from './pages/admin/AdminMusicPage'
 import AdminPhotosPage from './pages/admin/AdminPhotosPage'
-import AdminRepliesPage from './pages/admin/AdminRepliesPage'
 
 function App() {
   const auth = useAuthGate()
@@ -43,9 +40,8 @@ function App() {
         >
           <Route path="/home" element={<HomePage />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/daily" element={<DailyPage />} />
-          <Route path="/saved" element={<SavedPage />} />
           <Route path="/photobox" element={<PhotoboxPage />} />
+          <Route path="/games" element={<GamesPage />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute isAllowed={guard.isAdmin} />}>
@@ -61,10 +57,8 @@ function App() {
           }
         >
           <Route index element={<AdminDashboardPage />} />
-          <Route path="replies" element={<AdminRepliesPage />} />
           <Route path="photos" element={<AdminPhotosPage />} />
           <Route path="music" element={<AdminMusicPage />} />
-          <Route path="daily-messages" element={<AdminDailyMessagesPage />} />
         </Route>
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

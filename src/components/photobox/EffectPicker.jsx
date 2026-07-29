@@ -1,30 +1,20 @@
-import { photoboxEffectTypes } from '../../data/photoboxEffects'
-
-function getBadgeLabel(effect) {
-  if (effect.type === photoboxEffectTypes.FACE_OVERLAY && !effect.usableInInitialRelease) {
-    return 'Face'
-  }
-
-  if (effect.type === photoboxEffectTypes.COMBO) {
-    return 'Combo'
-  }
-
-  return effect.category
-}
-
 export default function EffectPicker({ effects, selectedEffect, onSelectEffect, disabled }) {
   return (
-    <section className="card" style={{ padding: '1rem', display: 'grid', gap: '0.9rem' }}>
+    <section className="card" style={{ padding: '1rem', display: 'grid', gap: '0.75rem' }}>
       <div>
-        <p className="handwritten" style={{ margin: 0, fontSize: '1.65rem' }}>
-          Pick your little effect
+        <p className="handwritten" style={{ margin: 0, fontSize: '1.5rem' }}>
+          Pilih efek kecilmu
         </p>
-        <p style={{ margin: '0.35rem 0 0', color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-          The first 20+ usable effects are ready for capture. Face effects can stay gentle if tracking is unavailable.
+        <p style={{ margin: '0.3rem 0 0', color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
+          Filter wajah mengikuti gerakanmu secara langsung.
         </p>
       </div>
 
-      <div style={{ display: 'grid', gap: '0.85rem', gridAutoFlow: 'column', gridAutoColumns: 'minmax(9rem, 1fr)', overflowX: 'auto', paddingBottom: '0.3rem' }}>
+      <div
+        role="listbox"
+        aria-label="Efek kecil"
+        style={{ display: 'flex', gap: '0.65rem', overflowX: 'auto', paddingBottom: '0.25rem' }}
+      >
         {effects.map((effect) => {
           const isActive = selectedEffect.id === effect.id
 
@@ -32,55 +22,52 @@ export default function EffectPicker({ effects, selectedEffect, onSelectEffect, 
             <button
               key={effect.id}
               type="button"
-              aria-pressed={isActive}
-              className="card"
+              role="option"
+              aria-selected={isActive}
+              title={effect.name}
               onClick={() => onSelectEffect(effect)}
               disabled={disabled}
               style={{
-                padding: '0.75rem',
-                minWidth: '9rem',
+                flex: '0 0 auto',
                 display: 'grid',
-                gap: '0.65rem',
-                textAlign: 'left',
-                borderColor: isActive ? 'rgba(201, 143, 143, 0.55)' : 'rgba(74, 47, 37, 0.08)',
-                opacity: disabled ? 0.72 : 1,
+                justifyItems: 'center',
+                gap: '0.35rem',
+                width: '3.75rem',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                opacity: disabled ? 0.55 : 1,
+                cursor: disabled ? 'default' : 'pointer',
               }}
             >
-              <div
+              <span
                 style={{
-                  borderRadius: 'var(--radius-md)',
-                  aspectRatio: '4 / 3',
+                  display: 'block',
+                  width: '3.2rem',
+                  height: '3.2rem',
+                  borderRadius: 'var(--radius-full)',
                   backgroundImage: `url("${effect.thumbnail}")`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  border: '1px solid rgba(74, 47, 37, 0.08)',
+                  border: isActive ? '2px solid var(--color-dusty-rose)' : '2px solid rgba(74, 47, 37, 0.1)',
+                  boxShadow: isActive ? '0 0 0 2px rgba(201, 143, 143, 0.35)' : 'none',
+                  transform: isActive ? 'scale(1.06)' : 'scale(1)',
+                  transition: 'border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease',
                 }}
               />
-
-              <div style={{ display: 'grid', gap: '0.22rem' }}>
-                <p style={{ margin: 0, fontWeight: 700, color: 'var(--color-deep-brown)', fontSize: '0.94rem' }}>
-                  {effect.name}
-                </p>
-                <span
-                  style={{
-                    display: 'inline-flex',
-                    width: 'fit-content',
-                    padding: '0.2rem 0.45rem',
-                    borderRadius: '999px',
-                    background: effect.requiresFaceTracking ? 'rgba(122, 92, 75, 0.12)' : 'rgba(201, 143, 143, 0.15)',
-                    color: 'var(--color-deep-brown)',
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                  }}
-                >
-                  {getBadgeLabel(effect)}
-                </span>
-                {!effect.usableInInitialRelease ? (
-                  <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: '0.72rem' }}>
-                    Advanced preview
-                  </p>
-                ) : null}
-              </div>
+              <span
+                style={{
+                  maxWidth: '3.75rem',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  color: 'var(--color-deep-brown)',
+                  fontSize: '0.68rem',
+                  fontWeight: 600,
+                }}
+              >
+                {effect.name}
+              </span>
             </button>
           )
         })}

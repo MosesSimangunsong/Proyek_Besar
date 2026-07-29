@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { photoboxCopy } from '../data/photoboxCopy'
+
 function normalizeCameraError(error) {
   if (!error) {
-    return 'I need your camera permission to make this little memory. Please allow camera access, sayang.'
+    return photoboxCopy.permissionError
   }
 
   if (error.name === 'NotAllowedError' || error.name === 'SecurityError') {
-    return 'I need your camera permission to make this little memory. Please allow camera access, sayang.'
+    return photoboxCopy.permissionError
   }
 
   if (
@@ -15,10 +17,10 @@ function normalizeCameraError(error) {
     || error.name === 'NotReadableError'
     || error.name === 'OverconstrainedError'
   ) {
-    return 'Your camera is not available right now. Try again from another device or browser.'
+    return photoboxCopy.cameraUnavailable
   }
 
-  return 'The camera missed that moment. Let\'s try again, sayang.'
+  return 'Kamera melewatkan momen itu. Coba lagi ya, sayang.'
 }
 
 export function usePhotoboxCamera() {
@@ -95,7 +97,7 @@ export function usePhotoboxCamera() {
 
   const startCamera = useCallback(async () => {
     if (!navigator.mediaDevices?.getUserMedia) {
-      setCameraError('Your camera is not available right now. Try again from another device or browser.')
+      setCameraError(photoboxCopy.cameraUnavailable)
       return false
     }
 

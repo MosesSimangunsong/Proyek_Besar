@@ -1,91 +1,58 @@
-function getLayoutPreview(layout) {
-  return layout.id === 'grid-2x3'
-    ? 'linear-gradient(180deg, rgba(255,255,255,0.95), rgba(244, 227, 211, 0.9))'
-    : 'linear-gradient(180deg, rgba(255,255,255,0.95), rgba(233, 213, 221, 0.86))'
+import { Grid2x2, Image, LayoutGrid, Rows3 } from 'lucide-react'
+
+const LAYOUT_ICONS = {
+  'strip-1x3': Rows3,
+  'grid-2x2': Grid2x2,
+  'grid-2x3': LayoutGrid,
+  'polaroid-single': Image,
 }
 
 export default function LayoutPicker({ layouts, selectedLayout, onSelectLayout, disabled }) {
   return (
-    <section className="card" style={{ padding: '1rem', display: 'grid', gap: '0.9rem' }}>
-      <div>
-        <p className="handwritten" style={{ margin: 0, fontSize: '1.65rem' }}>
-          Choose your photobox shape
-        </p>
-        <p style={{ margin: '0.35rem 0 0', color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-          Pick the memory shape before capture starts.
-        </p>
-      </div>
+    <div
+      role="listbox"
+      aria-label="Bentuk Photobox"
+      style={{
+        position: 'absolute',
+        top: '50%',
+        right: '0.65rem',
+        transform: 'translateY(-50%)',
+        display: 'grid',
+        gap: '0.45rem',
+      }}
+    >
+      {layouts.map((layout) => {
+        const isActive = selectedLayout.id === layout.id
+        const Icon = LAYOUT_ICONS[layout.id] ?? LayoutGrid
 
-      <div style={{ display: 'grid', gap: '0.8rem', gridTemplateColumns: 'repeat(auto-fit, minmax(12rem, 1fr))' }}>
-        {layouts.map((layout) => {
-          const isActive = selectedLayout.id === layout.id
-
-          return (
-            <button
-              key={layout.id}
-              type="button"
-              aria-pressed={isActive}
-              className="card"
-              onClick={() => onSelectLayout(layout)}
-              disabled={disabled}
-              style={{
-                padding: '0.85rem',
-                display: 'grid',
-                gap: '0.7rem',
-                textAlign: 'left',
-                borderColor: isActive ? 'rgba(201, 143, 143, 0.55)' : 'rgba(74, 47, 37, 0.08)',
-                boxShadow: isActive ? '0 14px 35px rgba(201, 143, 143, 0.16)' : 'var(--shadow-soft)',
-                opacity: disabled ? 0.72 : 1,
-              }}
-            >
-              <div
-                style={{
-                  borderRadius: 'var(--radius-md)',
-                  background: getLayoutPreview(layout),
-                  padding: '0.8rem',
-                  minHeight: '8rem',
-                  display: 'grid',
-                  gap: '0.45rem',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: `repeat(${layout.columns}, minmax(0, 1fr))`,
-                    gap: '0.35rem',
-                    alignContent: 'stretch',
-                    height: '100%',
-                  }}
-                >
-                  {Array.from({ length: layout.photoCount }).map((_, index) => (
-                    <span
-                      key={`${layout.id}-${index}`}
-                      style={{
-                        borderRadius: '12px',
-                        minHeight: layout.id === 'grid-2x3' ? '2.1rem' : '1.7rem',
-                        background: isActive ? 'rgba(201, 143, 143, 0.3)' : 'rgba(122, 92, 75, 0.14)',
-                        border: '1px solid rgba(74, 47, 37, 0.08)',
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gap: '0.22rem' }}>
-                <p style={{ margin: 0, fontWeight: 700, color: 'var(--color-deep-brown)' }}>
-                  {layout.name}
-                </p>
-                <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: 'var(--text-sm)' }}>
-                  {layout.description}
-                </p>
-                <p style={{ margin: 0, color: 'var(--color-muted-brown)', fontSize: 'var(--text-xs)' }}>
-                  {layout.photoCount} photos
-                </p>
-              </div>
-            </button>
-          )
-        })}
-      </div>
-    </section>
+        return (
+          <button
+            key={layout.id}
+            type="button"
+            role="option"
+            aria-selected={isActive}
+            title={`${layout.name} — ${layout.photoCount} foto`}
+            onClick={() => onSelectLayout(layout)}
+            disabled={disabled}
+            style={{
+              width: '2.5rem',
+              height: '2.5rem',
+              display: 'grid',
+              placeItems: 'center',
+              borderRadius: 'var(--radius-md)',
+              background: isActive ? 'rgba(255, 253, 248, 0.94)' : 'rgba(30, 20, 15, 0.4)',
+              border: isActive ? '1.5px solid var(--color-dusty-rose)' : '1.5px solid rgba(255, 253, 248, 0.35)',
+              color: isActive ? 'var(--color-deep-brown)' : '#fffdf8',
+              boxShadow: isActive ? 'var(--shadow-soft)' : 'none',
+              opacity: disabled ? 0.55 : 1,
+              cursor: disabled ? 'default' : 'pointer',
+              transition: 'background 150ms ease, border-color 150ms ease, color 150ms ease',
+            }}
+          >
+            <Icon size={17} strokeWidth={2} />
+          </button>
+        )
+      })}
+    </div>
   )
 }

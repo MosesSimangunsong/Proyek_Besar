@@ -9,7 +9,10 @@ export const FACE_LANDMARK_INDEX = {
 
 export function normalizeLandmark(point, width, height) {
   return {
-    x: point.x * width,
+    // The preview/capture canvas draws the video mirrored (see applyMirroredVideoDraw),
+    // but MediaPipe reports landmarks in the raw, unmirrored video frame — flip x here so
+    // overlay anchors land on the mirrored image instead of moving opposite the face.
+    x: (1 - point.x) * width,
     y: point.y * height,
     z: point.z ?? 0,
   }
