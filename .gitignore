@@ -32,7 +32,3 @@ Thumbs.db
 # Claude Code
 .claude/settings.local.json
 .agents/
-
-# the surprise video is too large for a normal git push (GitHub blocks
-# files over 100MB); compress it and add it to public/img/ instead
-src/assets/img/lv_0_20260729233049.mp4

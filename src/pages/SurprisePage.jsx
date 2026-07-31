@@ -1,39 +1,45 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import FloatingDecorations from '../components/scrapbook/FloatingDecorations'
-import { appCopy } from '../data/appCopy'
-import { validateSecretCode } from '../utils/validationUtils'
+import FloatingDecorations from "../components/scrapbook/FloatingDecorations";
+import { appCopy } from "../data/appCopy";
+import { validateSecretCode } from "../utils/validationUtils";
 
 export default function SurprisePage() {
-  const navigate = useNavigate()
-  const [code, setCode] = useState('')
-  const [error, setError] = useState('')
-  const [isUnlocked, setIsUnlocked] = useState(false)
+  const navigate = useNavigate();
+  const [code, setCode] = useState("");
+  const [error, setError] = useState("");
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (!code.trim()) {
-      setError(appCopy.surprise.incompleteError)
-      return
+      setError(appCopy.surprise.incompleteError);
+      return;
     }
 
     if (validateSecretCode(code)) {
-      setError('')
-      setIsUnlocked(true)
-      return
+      setError("");
+      setIsUnlocked(true);
+      return;
     }
 
-    const { errors } = appCopy.surprise
-    setError(errors[Math.floor(Math.random() * errors.length)])
-  }
+    const { errors } = appCopy.surprise;
+    setError(errors[Math.floor(Math.random() * errors.length)]);
+  };
 
   return (
-    <section className="page-section" style={{ minHeight: '100vh', position: 'relative' }}>
+    <section
+      className="page-section"
+      style={{ minHeight: "100vh", position: "relative" }}
+    >
       <FloatingDecorations />
-      <div className="page-shell" style={{ display: 'grid', placeItems: 'center' }}>
+      <div
+        className="page-shell"
+        style={{ display: "grid", placeItems: "center" }}
+      >
         <AnimatePresence mode="wait">
           {!isUnlocked ? (
             <motion.form
@@ -44,11 +50,17 @@ export default function SurprisePage() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="paper-panel stack-md"
-              style={{ width: 'min(100%, 34rem)' }}
+              style={{ width: "min(100%, 34rem)" }}
             >
               <div>
                 <span className="eyebrow">{appCopy.surprise.eyebrow}</span>
-                <h1 className="page-title" style={{ marginTop: '0.5rem', fontSize: 'clamp(1.75rem, 5vw, 2.75rem)' }}>
+                <h1
+                  className="page-title"
+                  style={{
+                    marginTop: "0.5rem",
+                    fontSize: "clamp(1.75rem, 5vw, 2.75rem)",
+                  }}
+                >
                   {appCopy.surprise.title}
                 </h1>
                 <p className="page-subtitle">{appCopy.surprise.subtitle}</p>
@@ -71,7 +83,7 @@ export default function SurprisePage() {
                   key={error}
                   initial={{ opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
-                  style={{ margin: 0, color: 'var(--color-dusty-rose)' }}
+                  style={{ margin: 0, color: "var(--color-dusty-rose)" }}
                 >
                   {error}
                 </motion.p>
@@ -88,32 +100,54 @@ export default function SurprisePage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="stack-md"
-              style={{ width: 'min(100%, 40rem)' }}
+              style={{ width: "min(100%, 40rem)" }}
             >
               <div>
-                <span className="eyebrow">{appCopy.surprise.unlockedEyebrow}</span>
-                <h1 className="page-title" style={{ marginTop: '0.5rem' }}>
+                <span className="eyebrow">
+                  {appCopy.surprise.unlockedEyebrow}
+                </span>
+                <h1 className="page-title" style={{ marginTop: "0.5rem" }}>
                   {appCopy.surprise.unlockedTitle}
                 </h1>
               </div>
 
-              <div className="card animate-gentle-glow" style={{ padding: '0.75rem', overflow: 'hidden' }}>
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  style={{ width: '100%', borderRadius: 'var(--radius-md)', display: 'block', background: '#000' }}
-                >
-                  <source src="/img/surprise-video.mp4" type="video/mp4" />
-                  Browser kamu belum mendukung pemutaran video ini.
-                </video>
+              <div
+                className="card animate-gentle-glow"
+                style={{ padding: "0.75rem", overflow: "hidden" }}
+              >
+                <iframe
+                  src="https://drive.google.com/file/d/18r0s9CsUXYVEoLyk8Hsf9_709KxHSRXi/preview"
+                  style={{
+                    width: "100%",
+                    aspectRatio: "16/9",
+                    borderRadius: "var(--radius-md)",
+                    border: "none",
+                    display: "block",
+                    background: "#000",
+                  }}
+                  allow="autoplay"
+                  allowFullScreen
+                />
               </div>
 
-              <div className="paper-panel" style={{ maxHeight: '16rem', overflowY: 'auto' }}>
-                <p className="handwritten" style={{ fontSize: '1.5rem', margin: '0 0 0.75rem' }}>
+              <div
+                className="paper-panel"
+                style={{ maxHeight: "16rem", overflowY: "auto" }}
+              >
+                <p
+                  className="handwritten"
+                  style={{ fontSize: "1.5rem", margin: "0 0 0.75rem" }}
+                >
                   {appCopy.surprise.letterHeading}
                 </p>
-                <p style={{ margin: 0, color: 'var(--color-deep-brown)', fontSize: 'var(--text-lg)', lineHeight: 1.8 }}>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "var(--color-deep-brown)",
+                    fontSize: "var(--text-lg)",
+                    lineHeight: 1.8,
+                  }}
+                >
                   {appCopy.surprise.letterBody}
                 </p>
               </div>
@@ -121,8 +155,8 @@ export default function SurprisePage() {
               <button
                 type="button"
                 className="button-accent"
-                style={{ justifySelf: 'center' }}
-                onClick={() => navigate('/unlock')}
+                style={{ justifySelf: "center" }}
+                onClick={() => navigate("/unlock")}
               >
                 {appCopy.surprise.continueButton}
               </button>
@@ -131,5 +165,5 @@ export default function SurprisePage() {
         </AnimatePresence>
       </div>
     </section>
-  )
+  );
 }
