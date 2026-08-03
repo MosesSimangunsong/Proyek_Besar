@@ -1,0 +1,557 @@
+/* Port 1:1 dari birthday-master/stylesheet.css + loading.css (github.com/ayusharma/birthday).
+   Semua selector & keyframe diberi prefix hb- agar tidak bentrok dengan Tailwind/global.
+   Bootstrap grid & jQuery dari source asli diganti flex + React. */
+
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@400;600;700&display=swap");
+
+/* ===== Scene backdrop (port dari body #000 -> peach + peach_alive) ===== */
+
+.hb-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #000;
+  transition: background-color linear 5s;
+}
+
+.hb-scene--peach {
+  background-color: #ffdab9;
+}
+
+.hb-scene--alive {
+  animation: hb_peach_alive linear 8s infinite;
+}
+
+@keyframes hb_peach_alive {
+  0% {
+    background-color: #ffdab9;
+  }
+  25% {
+    background-color: #ffe4b5;
+  }
+  50% {
+    background-color: #ffdab9;
+  }
+  75% {
+    background-color: #ffefd5;
+  }
+  100% {
+    background-color: #ffdab9;
+  }
+}
+
+/* ===== Bulb garland (port .bulb / .bulb-holder + glow & blink per warna) ===== */
+
+.hb-bulb-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.hb-bulb-holder {
+  height: 70px;
+}
+
+.hb-bulb {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center 0px;
+  background-size: 50px 50px;
+}
+
+.hb-bulb--yellow {
+  background-image: url("../assets/surprise/bulb_yellow.png");
+}
+.hb-bulb--red {
+  background-image: url("../assets/surprise/bulb_red.png");
+}
+.hb-bulb--blue {
+  background-image: url("../assets/surprise/bulb_blue.png");
+}
+.hb-bulb--green {
+  background-image: url("../assets/surprise/bulb_green.png");
+}
+.hb-bulb--pink {
+  background-image: url("../assets/surprise/bulb_pink.png");
+}
+.hb-bulb--orange {
+  background-image: url("../assets/surprise/bulb_orange.png");
+}
+
+.hb-bulb--yellow-glow {
+  animation: hb_bulb_glow_yellow linear 5s;
+}
+.hb-bulb--red-glow {
+  animation: hb_bulb_glow_red linear 5s;
+}
+.hb-bulb--blue-glow {
+  animation: hb_bulb_glow_blue linear 5s;
+}
+.hb-bulb--green-glow {
+  animation: hb_bulb_glow_green linear 5s;
+}
+.hb-bulb--pink-glow {
+  animation: hb_bulb_glow_pink linear 5s;
+}
+.hb-bulb--orange-glow {
+  animation: hb_bulb_glow_orange linear 5s;
+}
+
+@keyframes hb_bulb_glow_yellow {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb_yellow.png");
+    opacity: 1;
+  }
+}
+@keyframes hb_bulb_glow_red {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb_red.png");
+    opacity: 1;
+  }
+}
+@keyframes hb_bulb_glow_blue {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb_blue.png");
+    opacity: 1;
+  }
+}
+@keyframes hb_bulb_glow_green {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb_green.png");
+    opacity: 1;
+  }
+}
+@keyframes hb_bulb_glow_pink {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb_pink.png");
+    opacity: 1;
+  }
+}
+@keyframes hb_bulb_glow_orange {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb_orange.png");
+    opacity: 1;
+  }
+}
+
+/* Durasi blink per warna mengikuti source: 1s / 1.2s / 1.4s / 1.8s / 2s / 2.2s */
+.hb-bulb--yellow-blink {
+  animation: hb_bulb_blink_yellow linear 1s infinite;
+}
+.hb-bulb--red-blink {
+  animation: hb_bulb_blink_red linear 1.2s infinite;
+}
+.hb-bulb--blue-blink {
+  animation: hb_bulb_blink_blue linear 1.4s infinite;
+}
+.hb-bulb--green-blink {
+  animation: hb_bulb_blink_green linear 1.8s infinite;
+}
+.hb-bulb--pink-blink {
+  animation: hb_bulb_blink_pink linear 2s infinite;
+}
+.hb-bulb--orange-blink {
+  animation: hb_bulb_blink_orange linear 2.2s infinite;
+}
+
+@keyframes hb_bulb_blink_yellow {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+  50% {
+    background-image: url("../assets/surprise/bulb_yellow.png");
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+}
+@keyframes hb_bulb_blink_red {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+  50% {
+    background-image: url("../assets/surprise/bulb_red.png");
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+}
+@keyframes hb_bulb_blink_blue {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+  50% {
+    background-image: url("../assets/surprise/bulb_blue.png");
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+}
+@keyframes hb_bulb_blink_green {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+  50% {
+    background-image: url("../assets/surprise/bulb_green.png");
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+}
+@keyframes hb_bulb_blink_pink {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+  50% {
+    background-image: url("../assets/surprise/bulb_pink.png");
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+}
+@keyframes hb_bulb_blink_orange {
+  0% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+  50% {
+    background-image: url("../assets/surprise/bulb_orange.png");
+  }
+  100% {
+    background-image: url("../assets/surprise/bulb.png");
+  }
+}
+
+/* ===== Banner (port .bannar / .bannar-come) ===== */
+
+.hb-bannar-wrap {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transform: translate(0px, -500px);
+}
+
+.hb-bannar-wrap--come {
+  animation: hb_bannar_come linear 6s;
+  transform: translate(0px, 0px);
+}
+
+@keyframes hb_bannar_come {
+  0% {
+    transform: translate(0px, -1000px);
+  }
+  33% {
+    transform: rotate(10deg);
+  }
+  66% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.hb-bannar-img {
+  display: inline-block;
+  max-width: min(100%, 469px);
+}
+
+.hb-text-banner {
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 4.5vw, 2.25rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.55em 1.2em;
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid rgba(214, 181, 109, 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-paper);
+}
+
+/* ===== Balon huruf (port .balloons + rotate behaviours + border) ===== */
+
+.hb-balloon {
+  position: fixed;
+  width: 100px;
+  height: 183px;
+  background-repeat: no-repeat;
+  background-size: 100px 183px;
+  opacity: 0.6;
+  z-index: 4;
+  text-align: center;
+}
+
+/* Saat berbaris "HBD INES" (momen ulang tahun) balon dikecilkan supaya
+   heading + quote + cake tetap muat satu layar laptop di bawahnya. */
+.hb-balloon--lined {
+  opacity: 0.9;
+  width: 76px;
+  height: 139px;
+  background-size: 76px 139px;
+}
+
+.hb-balloon h2 {
+  margin: 26px 0 0;
+  text-transform: uppercase;
+  font-family: "Signika", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 1;
+  text-shadow: 5px 5px 5px #fff;
+}
+
+.hb-balloon--lined h2 {
+  margin-top: 18px;
+  font-size: 38px;
+}
+
+.hb-balloon--1 {
+  background-image: url("../assets/surprise/b1.png");
+}
+.hb-balloon--2 {
+  background-image: url("../assets/surprise/b2.png");
+}
+.hb-balloon--3 {
+  background-image: url("../assets/surprise/b3.png");
+}
+.hb-balloon--4 {
+  background-image: url("../assets/surprise/b4.png");
+}
+.hb-balloon--5 {
+  background-image: url("../assets/surprise/b5.png");
+}
+.hb-balloon--6 {
+  background-image: url("../assets/surprise/b6.png");
+}
+.hb-balloon--7 {
+  background-image: url("../assets/surprise/b7.png");
+}
+
+.hb-balloon--rot1 {
+  animation: hb_balloons_rotate_one linear 10s infinite;
+  transform: rotate(30deg);
+}
+
+.hb-balloon--rot2 {
+  animation: hb_balloons_rotate_two linear 10s infinite;
+  transform: rotate(-20deg);
+}
+
+@keyframes hb_balloons_rotate_one {
+  0% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes hb_balloons_rotate_two {
+  0% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+
+.hb-balloon-border {
+  position: fixed;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  opacity: 0.5;
+  z-index: 3;
+  transition: top 8s linear;
+}
+
+.hb-balloon-border--fly {
+  top: -500px;
+}
+
+/* ===== Pesan — warna & tipografi diselaraskan ke design system Proyek_Besar:
+   heading handwritten (Caveat), body Plus Jakarta Sans. Struktur tetap
+   mengikuti birthday-master (teks langsung di atas latar peach). ===== */
+
+.hb-moment {
+  width: min(100%, 44rem);
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.hb-heading {
+  margin: 0;
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  line-height: 1.1;
+  color: var(--color-deep-brown);
+}
+
+.hb-body {
+  margin: 0;
+  max-width: 42rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(1rem, 2.6vw, 1.125rem);
+  line-height: 1.8;
+  color: var(--color-deep-brown);
+}
+
+/* ===== Tombol — mengikuti bahasa .button-accent project ===== */
+
+.hb-btn {
+  border: 0;
+  border-radius: var(--radius-full);
+  padding: 0.9rem 1.4rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-dusty-rose), var(--color-champagne-gold));
+  box-shadow: var(--shadow-glow);
+  cursor: pointer;
+  transition:
+    transform var(--duration-fast) var(--ease-soft),
+    box-shadow var(--duration-fast) var(--ease-soft);
+}
+
+.hb-btn:hover,
+.hb-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-floating);
+}
+
+/* Digeser ke kanan-bawah (bukan center seperti navbar reference) supaya
+   tidak menutupi lilin cake saat momen ulang tahun. */
+.hb-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 1.25rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ===== Loading spinner (port loading.css) ===== */
+
+.hb-loading-wrap {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.hb-loading-wrap--hide {
+  opacity: 0;
+}
+
+.hb-loading {
+  position: fixed;
+  z-index: 5;
+  height: 2em;
+  width: 2em;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.hb-loading:after {
+  content: "";
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  animation: hb_spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  box-shadow:
+    #fff 1.5em 0 0 0,
+    rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0,
+    rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+    #fff -1.1em 1.1em 0 0,
+    rgba(0, 0, 0, 0.5) -1.5em 0 0 0,
+    rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0,
+    rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+    rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+@keyframes hb_spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
